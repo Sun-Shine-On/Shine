@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1" cellspacing="1">
+{% for i in alls %}
+    <tr>
+        <td>{{ i.id }}</td>
+        <td>{{ i.title }}</td>
+        <td>{{ i.url }}</td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>
