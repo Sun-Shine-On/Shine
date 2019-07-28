@@ -1,0 +1,49 @@
+centos 7-1：
+	root密码sunchaowei
+	用户名密码000(登陆密码)
+
+2019/6/25
+安装：Numpy(数学库)  Pandas(数据分析包)  Matplotlib(2D绘图库)  sklearn 并预习
+6/28
+安装anocanda
+wget https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh安装：bash Anaconda3-4.4.0-Linux-x86_64.sh（提示错误可执行：yum install -y bzip2）
+添加环境变量
+vim ~/.bashrc
+export PATH="/root/anaconda3/bin:$PATH"
+export PATH="/root/anaconda3/bin/python:$PATH"
+保存后，使用source /root/.bashrc
+如果有python2与python3并存问题，可修改软链接来处理：
+mv /usr/bin/python /usr/bin/python.bakln -s /usr/local/python3/bin/python3 /usr/bin/pythonmv /usr/bin/pip /usr/bin/pip.bakln -s /usr/local/python3/bin/pip3 /usr/bin/pip验证：python，会出python3验证：pip，会调用pip3
+
+安装mariadb   ，添加密码，测试
+
+
+import pymongo
+
+import pandas as pd
+
+from pandas import Series,DataFrame
+
+
+#连接数据库
+
+client = pymongo.MongoClient('localhost',27017)
+
+db = client['python']
+
+# 授权
+
+db.authenticate(name='zhaochuan',password='123456',source='admin')
+
+info = db['zhao']
+
+#加载数据
+
+data = DataFrame(list(info.find()))
+
+# 写入CSV文件
+
+data.to_csv('NBA.csv')
+
+
+
